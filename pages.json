@@ -1,0 +1,92 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path":"pages/main/home",
+			"style":{
+				"navigationBarTitleText" : "首页",
+				"navigationBarBackgroundColor":"#E04B28",
+				"navigationBarTextStyle":"white",
+				"app-plus": {
+					"bounce": "none"
+				}
+			}
+		},
+		{
+			"path":"pages/main/news",
+			"style":{
+				"navigationBarTitleText" : "新闻",
+				"navigationBarBackgroundColor":"#E04B28",
+				"navigationBarTextStyle":"white",
+				"app-plus": {
+					"bounce": "none"
+				}
+			}
+		},
+		{
+			"path":"pages/main/hot",
+			"style":{
+				"navigationBarTitleText" : "火热",
+				"navigationBarBackgroundColor":"#E04B28",
+				"navigationBarTextStyle":"white",
+				"app-plus": {
+					"bounce": "none"
+				}
+			}
+		},
+		{
+			"path":"pages/main/me",
+			"style":{
+				"navigationBarTitleText" : "我的",
+				"navigationBarBackgroundColor":"#E04B28",
+				"navigationBarTextStyle":"white",
+				"app-plus": {
+					"bounce": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/login/login",
+			"style": {}
+		},
+		{
+			"path": "pages/flash/flash",
+			"style": {}
+		}
+
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"backgroundColor":"#fcfcfc",
+		"color": "#bfbfbf",
+		"selectedColor": "#dd589a",
+		"borderStyle":"white",
+		"list": [{
+			"iconPath": "static/icon_home_normal.png",
+			"selectedIconPath": "static/icon_home_select.png",
+			"pagePath": "pages/main/home",
+			"text": "首页"
+		},{
+			"iconPath": "static/icon_news_normal.png",
+			"selectedIconPath": "static/icon_news_select.png",
+			"pagePath": "pages/main/news",
+			"text": "新闻"
+		},{
+			"iconPath": "static/icon_hot_normal.png",
+			"selectedIconPath": "static/icon_hot_select.png",
+			"pagePath": "pages/main/hot",
+			"text": "火热"
+		},{
+			"iconPath": "static/icon_me_normal.png",
+			"selectedIconPath": "static/icon_me_select.png",
+			"pagePath": "pages/main/me",
+			"text": "我的"
+		}
+		]
+	}
+
+}

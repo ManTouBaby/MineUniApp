@@ -1,0 +1,1 @@
+<view class="content"><nav-bar vue-id="1" bind:__l="__l" vue-slots="{{['default']}}">我是头部</nav-bar><image class="logo" src="/static/logo.png"></image><view class="text-area"><text class="title">{{title}}</text></view></view>
