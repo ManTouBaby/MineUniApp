@@ -1,10 +1,11 @@
 <template>
 	<view ref="mineTabBox" class="navTabBox" :style="{'backgroundColor':backgroundColor}">
 		<!-- 标题数量小于5 -->
-		<view :style="{'height':navTabHeight+'px','line-height':isShowUnderLine?(navTabHeight-3)+'px':navTabHeight+'px'}" class="shortTab" v-if="tabTitle.length<=5">
+		<view :style="{'height':navTabHeight+'px','line-height':isShowUnderLine?(navTabHeight-3)+'px':navTabHeight+'px'}"
+		 class="shortTab" v-if="tabTitle.length<=5">
 			<!-- 导航栏 -->
-			<view class='navTab'>
-				<view v-for="(item,index) in tabTitle" :key="index" class='navTabItem' :style="{'color':index===tabClick?selectTextColor:defaultTextColor,'font-size':navTextSize+'px'}"
+			<view class='navTab' :style="{'height':navTabHeight+'px','line-height':isShowUnderLine?(navTabHeight-3)+'px':navTabHeight+'px'}">
+				<view v-for="(item,index) in tabTitle" :key="index" class='navTabItem' :style="{'color':index===minetabSelect?selectTextColor:defaultTextColor,'font-size':navTextSize+'px'}"
 				 @click='navClick(index)'>{{item}}</view>
 			</view>
 			<!-- 下划线 -->
@@ -13,9 +14,11 @@
 			</view>
 		</view>
 		<!-- 标题数量大于5 开启长导航栏模式 -->
-		<view :style="{'height':navTabHeight+'px','line-height':isShowUnderLine?(navTabHeight-4)+'px':navTabHeight+'px'}" class="longTab" v-if="tabTitle.length>5">
-			<scroll-view :show-scrollbar="false" scroll-x="true"  style="white-space: nowrap; display: flex" scroll-with-animation :scroll-into-view="toView">
-				<view  class="longItem" :data-index="index" :style="{'color':index===tabClick?selectTextColor:defaultTextColor,'font-size':navTextSize+'px'}"
+		<view :style="{'height':navTabHeight+'px','line-height':isShowUnderLine?(navTabHeight-4)+'px':navTabHeight+'px'}"
+		 class="longTab" v-if="tabTitle.length>5">
+			<scroll-view class="uni-scroll-view" :show-scrollbar="false" scroll-x="true" style="white-space: nowrap; display: flex"
+			 scroll-with-animation :scroll-into-view="toView">
+				<view class="longItem" :data-index="index" :style="{'color':index===minetabSelect?selectTextColor:defaultTextColor,'font-size':navTextSize+'px'}"
 				 v-for="(item,index) in tabTitle" :key="index" :id="'id'+index" @click="longClick(index)">{{item}}</view>
 				<view v-if="isShowUnderLine" class="underlineBox" :style='"transform:translateX("+isLeft+"px);"'>
 					<view class="underline" :style="{'backgroundColor':selectTextColor}"></view>
@@ -50,19 +53,23 @@
 				type: Number,
 				default: 40
 			},
-			navTextSize:{
-				type:Number,
-				default:13
+			navTextSize: {
+				type: Number,
+				default: 13
 			},
 			tabTitle: {
 				type: Array,
 				value: []
+			},
+			tabSelect: {
+				type: Number,
+				default: 0
 			}
 
 		},
 		data() {
 			return {
-				tabClick: 0, //导航栏被点击
+				minetabSelect: 0, //导航栏被点击
 				isLeft: 0, //导航栏下划线位置
 				isWidth: 0, //每个导航栏占位
 				toView: '',
@@ -79,28 +86,40 @@
 				}
 			})
 			// that.isWidth = this.$refs.navTabBox.offsetWidth;
-			
+
 			this.toView = 'id0'
 		},
 		mounted() {
-			this.isWidth =this.$refs.mineTabBox.$el.offsetWidth/this.tabTitle.length;
+			this.isWidth = this.$refs.mineTabBox.$el.offsetWidth / this.tabTitle.length;
 		},
 		methods: {
 			// 导航栏点击
 			navClick(index) {
 				// this.$parent.currentTab = index 
-				this.$emit('changeTab', index); //设置swiper的第几页
-				this.tabClick = index //设置导航点击了哪一个
+				this.minetabSelect = index //设置导航点击了哪一个
 				this.isLeft = index * this.isWidth //设置下划线位置
+				this.$emit('changeTab', index); //设置swiper的第几页
 			},
 			longClick(index) {
 				var tempIndex = index - 2
 				tempIndex = tempIndex <= 0 ? 0 : tempIndex
 				this.toView = `id${tempIndex}` //动画滚动,滚动至中心位置
-				this.tabClick = index //设置导航点击了哪一个
+				this.minetabSelect = index //设置导航点击了哪一个
 				this.isLeft = index * this.isLongWidth //设置下划线位置
 				this.$emit('changeTab', index); //设置swiper的第几页
 				// this.$parent.currentTab = index //设置swiper的第几页
+			}
+		},
+		watch: {
+			minetabSelect() {
+				this.isLeft = this.minetabSelect * this.isLongWidth //设置下划线位置
+				// this.tabSelect = this.minetabSelect;
+			},
+			tabSelect(e) {
+				var tempIndex = e - 2
+				tempIndex = tempIndex <= 0 ? 0 : tempIndex
+				this.toView = `id${tempIndex}` //动画滚动,滚动至中心位置
+				this.minetabSelect = e; //
 			}
 		}
 	}
@@ -109,12 +128,22 @@
 <style lang="scss">
 	.navTabBox {
 		width: 100%;
+
 		.longTab {
 			width: 100%;
+
 			.longItem {
 				width: 20vw;
 				display: inline-block;
 				text-align: center;
+			}
+
+			.uni-scroll-view::-webkit-scrollbar {
+				display: none;
+				width: 0 !important;
+				height: 0 !important;
+				-webkit-appearance: none;
+				background: transparent;
 			}
 
 			.underlineBox {
@@ -134,6 +163,7 @@
 
 		.shortTab {
 			width: 100%;
+
 			.navTab {
 				display: flex;
 				width: 100%;

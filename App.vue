@@ -15,6 +15,7 @@
 
 <style>
 	/*每个页面公共css */
+	  @import './common/uni.css';
 	page,
 	.content {
 		background-color: #f8f8f8;

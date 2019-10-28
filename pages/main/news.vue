@@ -1,7 +1,8 @@
 <template>
 	<view class="content">
 		<!-- 滚动导航 -->
-		<mine-nav-tab @changeTab="onTabBarClick" :tabTitle="tabBars" :defaultTextColor='defaultTextColor' :backgroundColor='backgroundColor' :selectTextColor="selectTextColor"> </mine-nav-tab>
+		<mine-nav-tab :tabSelect="currentTab" @changeTab="onTabBarClick" :tabTitle="tabBars" :defaultTextColor='defaultTextColor'
+		 :backgroundColor='backgroundColor' :selectTextColor="selectTextColor"> </mine-nav-tab>
 
 		<!-- 内容列表 -->
 		<swiper class="swiper-box" :current="currentPage" @change="pageChange">
@@ -45,13 +46,14 @@
 		data() {
 			return {
 				backgroundColor: '#FFFFFF',
-				selectTextColor:'#E04B28',
-				defaultTextColor:'#333333',
+				selectTextColor: '#E04B28',
+				defaultTextColor: '#333333',
 				tabTitleDates: ['选择一', '选择二', '选择三', '选择四'], //导航栏格式 --导航栏组件
 				tabBars: [],
 				newsList: [],
 				scrollViewInfo: "",
 				currentPage: 0,
+				currentTab: 0,
 				enableScroll: true
 			}
 		},
@@ -82,22 +84,32 @@
 			},
 			//获取新闻列表
 			loadNewsList(index) {
-				let activeTab = this.newsList[0];
-				let list = [];
-				for (let i = 0; i < 10; i++) {
-					let item = json.newsList[Math.floor(Math.random() * json.newsList.length)];
-					list.push(item);
-				}
-				activeTab.data = activeTab.data.concat(list);
+				let activeTab = this.newsList[index];
+				if(activeTab.data.length>0)return;
+				setTimeout(() => {
+					let list = [];
+					for (let i = 0; i < 10; i++) {
+						let item = json.newsList[Math.floor(Math.random() * json.newsList.length)];
+						list.push(item);
+					}
+					activeTab.data = activeTab.data.concat(list);
+				},1000)
+				
 			},
 
 
-			onTabBarClick(e) {
+			onTabBarClick(e) { //单击导航栏时页面处理
+				this.currentPage = this.currentTab = e;
+				this.loadNewsList(e)
+			},
+			pageChange(e) { //滑动页面时页面处理
+				let index = e.detail.current;
+				this.currentPage = this.currentTab = index;
+				this.loadNewsList(index);
+			},
+			loadMore(e) {
 				console.log(e)
-			},
-			pageChange(e) {
-				console.debug(e)
-			},
+			}
 		}
 	}
 </script>
@@ -148,8 +160,11 @@
 
 	.swiper-box {
 		height: 100%;
-		margin-top: 40px;
+		/* #ifdef H5 */
+		// margin-top: 40px;
+		/* #endif */
 	}
+
 
 	.panel-scroll-box {
 		height: 100%;
