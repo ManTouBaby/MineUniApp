@@ -128,10 +128,18 @@ const evaList = [{
 		content: '楼上说的好有道理。'
 	}
 ]
-
+const bannerDates =[{
+	bannerImgUrl:'http://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/77c6a7efce1b9d1663174705fbdeb48f8d546486.jpg',
+	bannerIndex:0
+},{bannerImgUrl:'http://p3-tt.bytecdn.cn/list/pgc-image/15394993934784aeea82ef5',
+	bannerIndex:1
+},{bannerImgUrl:'http://fc-feed.cdn.bcebos.com/0/pic/dc4b0610241d7016279f4f4652ea0886.jpg',
+	bannerIndex:2
+}]
 export default {
 	tabList,
 	newsList,
 	evaList,
-	mineTabList
+	mineTabList,
+	bannerDates
 }

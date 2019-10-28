@@ -91,6 +91,7 @@
 		},
 		mounted() {
 			this.isWidth = this.$refs.mineTabBox.$el.offsetWidth / this.tabTitle.length;
+			// console.log(this.$refs)
 		},
 		methods: {
 			// 导航栏点击

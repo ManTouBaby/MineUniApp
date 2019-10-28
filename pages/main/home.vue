@@ -8,15 +8,11 @@
 		<swiper class="page-content">
 			<swiper-item class="page-item">
 				<view class="swiper-item">
-					<swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000">
-						<swiper-item>
-							<view class="swiper-item" style="background-color: #2C405A;">1</view>
-						</swiper-item>
-						<swiper-item>
-							<view class="swiper-item" style="background-color: #4e2456;">2</view>
-						</swiper-item>
-						<swiper-item>
-							<view class="swiper-item" style="background-color: #ae34ae;">3</view>
+					<swiper class="bannerContainer" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000">
+						<swiper-item class="bannerItem" v-for="(item , index) in bannerDates" :key='index'>
+							<view>
+								<image :src="item.bannerImgUrl"></image><strong></strong>
+							</view>
 						</swiper-item>
 					</swiper>
 				</view>
@@ -43,6 +39,7 @@
 </template>
 
 <script>
+	import json from '@/json.js'
 	export default {
 		data() {
 			return {
@@ -52,6 +49,7 @@
 				scrollLeft: 0,
 				tabCurrentIndex: 0,
 				tabTitleDates: ['在线音乐', '本地音乐'], //导航栏格式 --导航栏组件
+				bannerDates:[],
 				senconTabDates:[
 					{
 						tabName:'每日推荐',
@@ -83,6 +81,7 @@
 		},
 		onLoad() {
 			// this.newDates = newsData;
+			this.bannerDates =json.bannerDates;
 		},
 		methods: {
 			tabChange(e) {
@@ -105,31 +104,56 @@
 	/* 页面样式设定 */
 	.page-content {
 		height: 100%;
-	}
-
-	.flex-item {
-		.uni-flex {
-			view {
-				width: 90rpx;
-				height: 90rpx;
-				background-color: #FF3333;
-				border-radius: 46rpx;
-				
-				image {
-					width: 80rpx;
-					height: 80rpx;
-					margin: 5rpx;
+		
+		/* Banner广播 */
+		.bannerContainer{
+			width: 100%;
+			height: 200rpx;
+			margin: 20rpx 0;
+			.bannerItem{
+				width: 100%;
+				height: 100%;
+				view{
+					width: 90%;
+					height: 100%;
+					margin: 0 5%;
+					border-radius: 16rpx;
+					overflow: hidden;
+					image{
+						width: 100%;
+						height: 100%;
+					}
 				}
 			}
 		}
-
-
-		.senconTab {
-			margin-top: 6rpx;
-			display: block;
-			text-align: center;
-			font-size: 14rpx;
-			color: #2C405A;
+		
+		
+		/* 菜单 */
+		.flex-item {
+			.uni-flex {
+				view {
+					width: 90rpx;
+					height: 90rpx;
+					background-color: #FF3333;
+					border-radius: 46rpx;
+					
+					image {
+						width: 80rpx;
+						height: 80rpx;
+						margin: 5rpx;
+					}
+				}
+			}
+		
+			.senconTab {
+				margin-top: 6rpx;
+				display: block;
+				text-align: center;
+				font-size: 16rpx;
+				color: #2C405A;
+			}
 		}
 	}
+
+	
 </style>

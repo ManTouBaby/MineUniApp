@@ -13,12 +13,12 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
 	/*每个页面公共css */
 	  @import './common/uni.css';
 	page,
 	.content {
-		background-color: #f8f8f8;
+		background-color: $uni-bg-color;
 		height: 100%;
 		overflow: hidden;
 	}
