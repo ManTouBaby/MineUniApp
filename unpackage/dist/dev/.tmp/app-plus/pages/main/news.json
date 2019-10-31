@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "新闻",
+  "navigationBarBackgroundColor": "#E04B28",
+  "navigationBarTextStyle": "white",
+  "bounce": "none",
+  "usingComponents": {
+    "mine-nav-tab": "/components/mine-nav-tab/mine-nav-tab"
+  }
+}

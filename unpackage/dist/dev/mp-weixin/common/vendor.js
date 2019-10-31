@@ -734,7 +734,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -7089,7 +7089,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7110,14 +7110,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7193,7 +7193,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -7570,10 +7570,10 @@ internalMixin(Vue);
 
 /***/ }),
 
-/***/ 29:
-/*!************************************!*\
-  !*** E:/GitHub/MineUniApp/json.js ***!
-  \************************************/
+/***/ 21:
+/*!***************************************!*\
+  !*** D:/Study/Git/MineUniApp/json.js ***!
+  \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7705,15 +7705,23 @@ var evaList = [{
   nickname: 'Ranth Allngal',
   time: '09-20 12:54',
   zan: '54',
-  content: '楼上说的好有道理。' }];var _default =
+  content: '楼上说的好有道理。' }];
 
 
+var bannerDates = [{
+  bannerImgUrl: 'http://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/77c6a7efce1b9d1663174705fbdeb48f8d546486.jpg',
+  bannerIndex: 0 },
+{ bannerImgUrl: 'http://p3-tt.bytecdn.cn/list/pgc-image/15394993934784aeea82ef5',
+  bannerIndex: 1 },
+{ bannerImgUrl: 'http://fc-feed.cdn.bcebos.com/0/pic/dc4b0610241d7016279f4f4652ea0886.jpg',
+  bannerIndex: 2 }];var _default =
 
 {
   tabList: tabList,
   newsList: newsList,
   evaList: evaList,
-  mineTabList: mineTabList };exports.default = _default;
+  mineTabList: mineTabList,
+  bannerDates: bannerDates };exports.default = _default;
 
 /***/ }),
 
@@ -7749,9 +7757,9 @@ module.exports = g;
 /***/ }),
 
 /***/ 4:
-/*!***************************************!*\
-  !*** E:/GitHub/MineUniApp/pages.json ***!
-  \***************************************/
+/*!******************************************!*\
+  !*** D:/Study/Git/MineUniApp/pages.json ***!
+  \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8659,9 +8667,9 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
 /***/ }),
 
 /***/ 68:
-/*!********************************************************************!*\
-  !*** E:/GitHub/MineUniApp/components/mescroll-uni/mescroll-uni.js ***!
-  \********************************************************************/
+/*!***********************************************************************!*\
+  !*** D:/Study/Git/MineUniApp/components/mescroll-uni/mescroll-uni.js ***!
+  \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9411,9 +9419,9 @@ MeScroll.prototype.setBounce = function (isBounce) {
 /***/ }),
 
 /***/ 69:
-/*!***************************************************************************!*\
-  !*** E:/GitHub/MineUniApp/components/mescroll-uni/mescroll-uni-option.js ***!
-  \***************************************************************************/
+/*!******************************************************************************!*\
+  !*** D:/Study/Git/MineUniApp/components/mescroll-uni/mescroll-uni-option.js ***!
+  \******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9452,9 +9460,9 @@ GlobalOption;exports.default = _default;
 /***/ }),
 
 /***/ 7:
-/*!********************************************************!*\
-  !*** E:/GitHub/MineUniApp/pages.json?{"type":"style"} ***!
-  \********************************************************/
+/*!***********************************************************!*\
+  !*** D:/Study/Git/MineUniApp/pages.json?{"type":"style"} ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9464,9 +9472,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ }),
 
 /***/ 8:
-/*!*******************************************************!*\
-  !*** E:/GitHub/MineUniApp/pages.json?{"type":"stat"} ***!
-  \*******************************************************/
+/*!**********************************************************!*\
+  !*** D:/Study/Git/MineUniApp/pages.json?{"type":"stat"} ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

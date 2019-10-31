@@ -1,5 +1,5 @@
 <template>
-	<view ref="mineTabBox" class="navTabBox" :style="{'backgroundColor':backgroundColor}">
+	<view id='mineTabBox' ref="mineTabBox" class="navTabBox" :style="{'backgroundColor':backgroundColor}">
 		<!-- 标题数量小于5 -->
 		<view :style="{'height':navTabHeight+'px','line-height':isShowUnderLine?(navTabHeight-3)+'px':navTabHeight+'px'}"
 		 class="shortTab" v-if="tabTitle.length<=5">
@@ -49,7 +49,11 @@
 				type: [String, Boolean],
 				default: true
 			},
-			navTabHeight: {
+			navTabWidth:{
+				type:[Number],
+				default:0
+			},
+			navTabHeight:{
 				type: Number,
 				default: 40
 			},
@@ -81,8 +85,9 @@
 			// 获取设备宽度
 			uni.getSystemInfo({
 				success(e) {
-					// that.isWidth = e.windowWidth / that.tabTitle.length //宽度除以导航标题个数=一个导航所占宽度
-					that.isLongWidth = e.windowWidth / 5
+					that.isWidth = e.windowWidth / that.tabTitle.length //宽度除以导航标题个数=一个导航所占宽度
+					that.isLongWidth = e.windowWidth / that.tabTitle.length 
+					console.log(e)
 				}
 			})
 			// that.isWidth = this.$refs.navTabBox.offsetWidth;
@@ -90,8 +95,18 @@
 			this.toView = 'id0'
 		},
 		mounted() {
-			this.isWidth = this.$refs.mineTabBox.$el.offsetWidth / this.tabTitle.length;
-			// console.log(this.$refs)
+			if(this.navTabWidth!=0){
+				this.isLongWidth = this.navTabWidth / this.tabTitle.length
+				this.isWidth = this.navTabWidth / this.tabTitle.length;
+			}
+			
+			uni.createSelectorQuery().select("#mineTabBox").fields({  
+			    size: true,  
+			}, (data) => {  
+			    console.log(data);  
+			}).exec();
+			
+			// console.log(this)
 		},
 		methods: {
 			// 导航栏点击

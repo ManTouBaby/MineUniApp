@@ -132,7 +132,7 @@
 		.flex-item {
 			.uni-flex {
 				view {
-					width: 90rpx;
+					width: '60%';
 					height: 90rpx;
 					background-color: #FF3333;
 					border-radius: 46rpx;

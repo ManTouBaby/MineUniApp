@@ -38,23 +38,45 @@
 /* 页面样式设定 */
 .page-content {
   height: 100%;
+  /* Banner广播 */
+  /* 菜单 */
 }
-.flex-item .uni-flex view {
-  width: 90rpx;
-  height: 90rpx;
-  background-color: #FF3333;
-  border-radius: 46rpx;
+.page-content .bannerContainer {
+    width: 100%;
+    height: 200rpx;
+    margin: 20rpx 0;
 }
-.flex-item .uni-flex view image {
-    width: 80rpx;
-    height: 80rpx;
-    margin: 5rpx;
+.page-content .bannerContainer .bannerItem {
+      width: 100%;
+      height: 100%;
 }
-.flex-item .senconTab {
-  margin-top: 6rpx;
-  display: block;
-  text-align: center;
-  font-size: 16rpx;
-  color: #2C405A;
+.page-content .bannerContainer .bannerItem view {
+        width: 90%;
+        height: 100%;
+        margin: 0 5%;
+        border-radius: 16rpx;
+        overflow: hidden;
+}
+.page-content .bannerContainer .bannerItem view image {
+          width: 100%;
+          height: 100%;
+}
+.page-content .flex-item .uni-flex view {
+    width: '60%';
+    height: 90rpx;
+    background-color: #FF3333;
+    border-radius: 46rpx;
+}
+.page-content .flex-item .uni-flex view image {
+      width: 80rpx;
+      height: 80rpx;
+      margin: 5rpx;
+}
+.page-content .flex-item .senconTab {
+    margin-top: 6rpx;
+    display: block;
+    text-align: center;
+    font-size: 16rpx;
+    color: #2C405A;
 }
 

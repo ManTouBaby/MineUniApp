@@ -1,0 +1,61 @@
+{
+  "pages": [
+    "pages/main/home",
+    "pages/main/news",
+    "pages/main/hot",
+    "pages/main/me",
+    "pages/login/login",
+    "pages/flash/flash"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "backgroundColor": "#fcfcfc",
+    "color": "#bfbfbf",
+    "selectedColor": "#dd589a",
+    "borderStyle": "white",
+    "list": [
+      {
+        "iconPath": "static/icon_home_normal.png",
+        "selectedIconPath": "static/icon_home_select.png",
+        "pagePath": "pages/main/home",
+        "text": "首页"
+      },
+      {
+        "iconPath": "static/icon_news_normal.png",
+        "selectedIconPath": "static/icon_news_select.png",
+        "pagePath": "pages/main/news",
+        "text": "新闻"
+      },
+      {
+        "iconPath": "static/icon_hot_normal.png",
+        "selectedIconPath": "static/icon_hot_select.png",
+        "pagePath": "pages/main/hot",
+        "text": "火热"
+      },
+      {
+        "iconPath": "static/icon_me_normal.png",
+        "selectedIconPath": "static/icon_me_select.png",
+        "pagePath": "pages/main/me",
+        "text": "我的"
+      }
+    ]
+  },
+  "nvueCompiler": "uni-app",
+  "renderer": "auto",
+  "splashscreen": {
+    "alwaysShowBeforeRender": true,
+    "autoclose": false
+  },
+  "appname": "UniAppTest",
+  "compilerVersion": "2.3.7",
+  "usingComponents": {
+    "mine-nav-tab": "/components/mine-nav-tab/mine-nav-tab",
+    "uni-nav-bar": "/components/uni-nav-bar/uni-nav-bar",
+    "scroll-uni": "/components/mescroll-uni/mescroll-uni"
+  }
+}

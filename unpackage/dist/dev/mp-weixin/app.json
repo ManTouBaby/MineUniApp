@@ -50,5 +50,6 @@
     "mine-nav-tab": "/components/mine-nav-tab/mine-nav-tab",
     "uni-nav-bar": "/components/uni-nav-bar/uni-nav-bar",
     "scroll-uni": "/components/mescroll-uni/mescroll-uni"
-  }
+  },
+  "sitemapLocation": "sitemap15.json"
 }
